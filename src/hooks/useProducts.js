@@ -46,9 +46,9 @@ function useProducts(page, categoryId='', search='') {
     
     useEffect(() => {
         if (categoryId) {
-            fetchAllProducts()
+            fetchByCategory()
         } else {
-            fetchProducts()
+            fetchAllProducts()
         }
     }, [categoryId, fetchByCategory, fetchAllProducts])
 
@@ -61,7 +61,7 @@ function useProducts(page, categoryId='', search='') {
     }, [categoryId, allProducts, search])
 
     const categoryTotalPages = Math.ceil(filteredByCategoryAndSearch.length / LIMIT)
-    const paginatedCategoryProducts = filteredByCategoryAndSearch.slice((page-1 * LIMIT), page * LIMIT)
+    const paginatedCategoryProducts = filteredByCategoryAndSearch.slice((page-1) * LIMIT, page * LIMIT)
 
     const filteredPageProducts = useMemo(() => {
         if (categoryId) return []
@@ -76,7 +76,7 @@ function useProducts(page, categoryId='', search='') {
         loading,
         error,
         totalPages: categoryId ? categoryTotalPages : totalPages,
-        totalItems: categoryId ? filteredByCategoryAndSearch.length : totalItems,
+        totalItems: categoryId ? filteredByCategoryAndSearch.length : totalProducts,
         refetch:    categoryId ? fetchByCategory : fetchAllProducts,
     }
 }

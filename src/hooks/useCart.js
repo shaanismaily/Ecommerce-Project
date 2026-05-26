@@ -4,10 +4,10 @@ import { setCart, clearCart as clearCartAction } from "../store/cartSlice";
 import { useCallback, useEffect, useState } from "react";
 
 function useCart() {
-  dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const items = useSelector((state) => state.cart.items);
-  const totalItems = useSelector((state) => state.totalItems);
+  const totalItems = useSelector((state) => state.cart.totalItems);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
 
   const [loading, setLoading] = useState(false);
@@ -90,9 +90,8 @@ function useCart() {
     }
   }
 
-  const isInCart = (productId) => {
+  const isInCart = (productId) => 
     items.some(item => item.product._id === productId)
-  }
 
   return {
     items,
