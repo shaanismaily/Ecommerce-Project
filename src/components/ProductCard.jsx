@@ -1,10 +1,14 @@
-// receives the full product object — no fetching inside
+import { useNavigate } from "react-router-dom"
+
 function ProductCard({ product }) {
+  const navigate = useNavigate()
   const { addToCart, removeFromCart, isInCart, actionLoading } = useCart()
   const inCart = isInCart(product._id)
 
   return (
-    <div style={{ border: "1px solid gray", padding: "20px", borderRadius: "10px" }}>
+    <div
+    navigate={`/products/${product._id}`}
+    style={{ border: "1px solid gray", padding: "20px", borderRadius: "10px" }}>
       <img
         src={product?.mainImage?.url}
         alt={product?.name}

@@ -29,8 +29,8 @@ export default function RegisterPage() {
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-header">
-          <h1 className="auth-title">Welcome back</h1>
-          <p className="auth-sub">Sign in to your account</p>
+          <h1 className="auth-title">Create account</h1>
+          <p className="auth-sub">Sign up to get started</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
@@ -53,7 +53,7 @@ export default function RegisterPage() {
               })}
             />
 
-            {errors.email && (
+            {errors.username && (
               <p className="form-error">{errors.username.message}</p>
             )}
           </div>
@@ -72,7 +72,7 @@ export default function RegisterPage() {
                 required: "Email is required",
                 pattern: {
                   value:
-                    /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                    /^\S+@\S+\.\S+$/,
                   message: "Invalid email address",
                 },
               })}
@@ -93,9 +93,13 @@ export default function RegisterPage() {
               type="password"
               placeholder="••••••••"
               className="field-input"
-              autoComplete="current-password"
+              autoComplete="new-password"
               {...register("password", {
                 required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
               })}
             />
 

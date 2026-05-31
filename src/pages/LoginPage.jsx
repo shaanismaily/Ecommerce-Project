@@ -28,7 +28,7 @@ export default function LoginPage() {
       // save user to redux
       dispatch(loginAction(userData))
 
-      navigate("/profile")
+      navigate("/products")
     } catch (err) {
       setError(
         err.response?.data?.message ||

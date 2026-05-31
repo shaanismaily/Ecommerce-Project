@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import ProductCard from "../components/ProductCard"
 import Pagination from "../components/Pagination"
 import useProducts from "../hooks/useProducts"

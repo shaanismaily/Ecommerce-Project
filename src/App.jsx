@@ -1,9 +1,13 @@
+import { Header } from "./components"
+import { Outlet } from "react-router-dom"
+
 
 function App() {
 
   return (
     <>
-      <h1>Shaan Ismaily</h1>
+      <Header />
+      <Outlet />
     </>
   )
 }
